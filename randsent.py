@@ -113,9 +113,7 @@ class Grammar:
         for rule in grammar_rules:
             prob, lhs, rhs = rule.split("\t")
             self.rules.setdefault(lhs, []).append((int(prob), rhs.split("#")[0].strip()))
-        
-        print(self.rules)
-        
+                
         
         
 
@@ -144,6 +142,8 @@ class Grammar:
             
             symbol = symbol.strip()
             
+            out += symbol
+            
             if symbol not in self.rules:
                 continue 
                         
@@ -158,9 +158,9 @@ class Grammar:
                 probs
             )[0]
             
-            out += self.sample(derivation_tree, max_expansions, next_symbol)
-        
-        return start_symbol + out
+            out += f"({self.sample(derivation_tree, max_expansions, next_symbol)})"
+            
+        return f"{out}"
 
 
 
