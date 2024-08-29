@@ -158,7 +158,7 @@ class Grammar:
                 probs
             )[0]
             
-            out += f"({self.sample(derivation_tree, max_expansions, next_symbol)})"
+            out += f" ({self.sample(derivation_tree, max_expansions, next_symbol)})"
             
         return f"{out}"
 
