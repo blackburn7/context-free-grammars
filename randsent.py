@@ -92,17 +92,32 @@ class Grammar:
             self
         """
         # Parse the input grammar file
-        self.rules = None
+        self.rules = {}
         self._load_rules_from_file(grammar_file)
 
-    def _load_rules_from_file(self, grammar_file):
+    def _load_rules_from_file(self, grammar_file: str):
         """
         Read grammar file and store its rules in self.rules
 
         Args:
             grammar_file (str): Path to the raw grammar file 
         """
-        raise NotImplementedError
+        
+        with open(grammar_file, 'r') as f:
+            grammar_str = f.read()
+            
+            
+        
+        grammar_rules = [line.strip() for line in grammar_str.splitlines() if line.strip() and not line.strip().startswith("#")]
+
+        for rule in grammar_rules:
+            prob, lhs, rhs = rule.split("\t")
+            self.rules.setdefault(lhs, []).append((int(prob), rhs.split("#")[0].strip()))
+        
+        print(self.rules)
+        
+        
+        
 
     def sample(self, derivation_tree, max_expansions, start_symbol):
         """
@@ -120,7 +135,36 @@ class Grammar:
         Returns:
             str: the random sentence or its derivation tree
         """
-        raise NotImplementedError
+
+
+        out = ""
+        
+        
+        for symbol in start_symbol.split():
+            
+            symbol = symbol.strip()
+            
+            if symbol not in self.rules:
+                continue 
+                        
+            probs = [symbol_prob_tuple[0] for symbol_prob_tuple in self.rules[symbol]]
+            possible_symbols = [symbol_prob_tuple[1] for symbol_prob_tuple in self.rules[symbol]]
+        
+            prob_sum = sum(probs)
+            probs = [prob / prob_sum for prob in probs]
+        
+            next_symbol = random.choices(
+                possible_symbols,
+                probs
+            )[0]
+            
+            out += self.sample(derivation_tree, max_expansions, next_symbol)
+        
+        return start_symbol + out
+
+
+
+
 
 
 ####################
