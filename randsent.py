@@ -134,10 +134,10 @@ class Grammar:
         Returns:
             str: the random sentence or its derivation tree
         """
-
+        if max_expansions <= 0:
+            return '...'
 
         out = ""
-        
         
         for symbol in start_symbol.split():
             
@@ -145,9 +145,17 @@ class Grammar:
             
             out += symbol
             
+            # if symbol not in self.rules, it's a terminal symbol
             if symbol not in self.rules:
                 continue 
-                        
+
+            # if we get here, symbol is a nonterminal and this is considered a non terminal expansion
+            # decrement max_expansions
+            max_expansions -= 1
+            if max_expansions <= 0:
+                out += " ..."
+                break
+
             probs = [symbol_prob_tuple[0] for symbol_prob_tuple in self.rules[symbol]]
             possible_symbols = [symbol_prob_tuple[1] for symbol_prob_tuple in self.rules[symbol]]
         
