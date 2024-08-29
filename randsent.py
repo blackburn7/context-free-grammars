@@ -112,7 +112,8 @@ class Grammar:
 
         for rule in grammar_rules:
             prob, lhs, rhs = rule.split("\t")
-            self.rules.setdefault(lhs, []).append((int(prob), rhs.split("#")[0].strip()))
+            # changed int to float as probabilities can also be floats (ex. wallstreet.gr)
+            self.rules.setdefault(lhs, []).append((float(prob), rhs.split("#")[0].strip()))
                 
         
         
