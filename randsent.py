@@ -134,6 +134,11 @@ class Grammar:
         Returns:
             str: the random sentence or its derivation tree
         """
+        sentence = ""
+        return self.recurse(derivation_tree, max_expansions, start_symbol, sentence)
+        
+    
+    def recurse(self, derivation_tree, max_expansions, start_symbol, sentence):
         if max_expansions <= 0:
             return '...'
 
@@ -144,6 +149,11 @@ class Grammar:
             symbol = symbol.strip()
             
             out += symbol
+            if derivation_tree:
+                sentence+=symbol
+            else:
+                if symbol not in self.rules:
+                    sentence += symbol
             
             # if symbol not in self.rules, it's a terminal symbol
             if symbol not in self.rules:
@@ -167,9 +177,12 @@ class Grammar:
                 probs
             )[0]
             
-            out += f" ({self.sample(derivation_tree, max_expansions, next_symbol)})"
-            
-        return f"{out}"
+            out += f" ({self.recurse(derivation_tree, max_expansions, next_symbol, sentence)})"
+
+        if derivation_tree:   
+            return f"{out}"
+        else:
+            return f"{sentence}"
 
 
 
