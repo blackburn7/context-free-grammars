@@ -113,10 +113,7 @@ class Grammar:
         for rule in grammar_rules:
             prob, lhs, rhs = rule.split("\t")
             # changed int to float as probabilities can also be floats (ex. wallstreet.gr)
-            self.rules.setdefault(lhs, []).append((float(prob), rhs.split("#")[0].strip()))
-                
-        
-        
+            self.rules.setdefault(lhs, []).append((float(prob), rhs.split("#")[0].strip()))           
 
     def sample(self, derivation_tree, max_expansions, start_symbol):
         """
@@ -134,58 +131,42 @@ class Grammar:
         Returns:
             str: the random sentence or its derivation tree
         """
-        sentence = ""
-        return self.recurse(derivation_tree, max_expansions, start_symbol, sentence)
-        
-    
-    def recurse(self, derivation_tree, max_expansions, start_symbol, sentence):
-        if max_expansions <= 0:
-            return '...'
+        expansions_left = [max_expansions]
 
-        out = ""
-        
-        for symbol in start_symbol.split():
-            
-            symbol = symbol.strip()
-            
-            out += symbol
-            if derivation_tree:
-                sentence+=symbol
-            else:
-                if symbol not in self.rules:
-                    sentence += symbol
-            
-            # if symbol not in self.rules, it's a terminal symbol
+        def recurse(symbol):
+            if expansions_left[0] <= 0:
+                return '...'
+
+            # if symbol is a terminal, return it
             if symbol not in self.rules:
-                continue 
+                return symbol
 
-            # if we get here, symbol is a nonterminal and this is considered a non terminal expansion
-            # decrement max_expansions
-            max_expansions -= 1
-            if max_expansions <= 0:
-                out += " ..."
-                break
-
-            probs = [symbol_prob_tuple[0] for symbol_prob_tuple in self.rules[symbol]]
-            possible_symbols = [symbol_prob_tuple[1] for symbol_prob_tuple in self.rules[symbol]]
-        
+            # if we get here, symbol is a nonterminal
+            expansions_left[0] -= 1
+            probs, possible_symbols = zip(*self.rules[symbol])
+            
             prob_sum = sum(probs)
             probs = [prob / prob_sum for prob in probs]
         
-            next_symbol = random.choices(
-                possible_symbols,
-                probs
-            )[0]
+            next_symbol = random.choices(possible_symbols, probs)[0]
             
-            out += f" ({self.recurse(derivation_tree, max_expansions, next_symbol, sentence)})"
+            # ensures we retain terminal symbols that are beyond nonterminals (ex. S ., we meed to retain .)
+            parts = []
+            for sub_symbol in next_symbol.split():
+                sub_symbol = sub_symbol.strip()
+                if sub_symbol in self.rules:
+                    parts.append(recurse(sub_symbol))
+                else:
+                    parts.append(sub_symbol)
+            
+            if derivation_tree:
+                out = f"({symbol} {' '.join(parts)})"
+            else:
+                out = ' '.join(parts)
+            
+            return out
 
-        if derivation_tree:   
-            return f"{out}"
-        else:
-            return f"{sentence}"
-
-
-
+        return recurse(start_symbol)
 
 
 
