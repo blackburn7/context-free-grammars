@@ -1,0 +1,33 @@
+1.4
+
+1. Provide 10 random sentences generated from your script.
+    i)      the chief of staff on the president kissed a pickle with every president under every 
+            perplexed president with every chief of staff under a chief of staff on a chief of staff under every chief of staff .
+
+    ii)     is it true that every floor understood every sandwich ?
+
+    iii)    is it true that every delicious floor wanted every fine fine sandwich on the pickle on every sandwich ?
+
+    iv)     a chief of staff kissed a floor on every sandwich on a chief of staff !
+
+    v)      every president pickled every floor on the sandwich in the chief of staff in every pickled president on the 
+            sandwich on every pickle in every pickle on a pickle in a president in a floor under every floor under a pickle on a chief of staff .
+
+    vi)     is it true that a delicious floor kissed a president under the pickle ?
+
+    vii)    the floor ate the sandwich on every delicious sandwich .
+
+    viii)   a chief of staff kissed the sandwich on a fine fine floor on every sandwich .
+
+    ix)     is it true that a chief of staff pickled every perplexed perplexed president ?
+
+    x)      the chief of staff wanted a fine president in every pickled floor .
+
+2. Provide 2 random sentences generated from your script, using --tree to show their derivations.
+    i)      (ROOT (S (NP (Det a) (Noun (Adj perplexed) (Noun (Adj fine) (Noun chief of staff)))) (VP (Verb wanted) (NP (Det the) (Noun floor)))) !)
+
+    ii)     (ROOT (S (NP (Det a) (Noun floor)) (VP (Verb understood) (NP (Det the) (Noun floor)))) !)
+
+3. As in the previous question, but with a --max expansions of 5.
+    i)      (ROOT (S (NP (Det every) (Noun ... ...)) ...) !)
+    ii)     (ROOT (S (NP (Det the) (Noun floor)) ...) .)
