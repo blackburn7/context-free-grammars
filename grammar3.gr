@@ -21,7 +21,7 @@
 
 1	ROOT	S .
 1	ROOT	S !
-1	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
+0.0001	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
 
 # The basic grammar rules.  Here's what the abbreviations stand for:
 #    S  = sentence
@@ -41,6 +41,8 @@
 1	VP	Verb
 
 1	VP Conj	VP
+
+1	VP	RepVerb SubConj NP VP
 
 1	NP	Det Noun
 1	NP	PropNoun
@@ -73,6 +75,9 @@
 1	CausVerb	perplexed
 
 1	AdVerb	very
+
+1	RepVerb	understood
+1	RepVerb	thought
 
 
 1	Det	the
