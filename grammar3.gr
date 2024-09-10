@@ -21,7 +21,8 @@
 
 1	ROOT	S .
 1	ROOT	S !
-0.0001	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
+0.3	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
+
 
 # The basic grammar rules.  Here's what the abbreviations stand for:
 #    S  = sentence
@@ -33,6 +34,12 @@
 #    Adj = adjective
 
 1	S	NP VP
+0.2	S	DummySubject CausVerb NP EmbeddedClause
+0.2	S	EmbeddedClause CausVerb NP
+
+1	EmbeddedClause	SubConj S
+
+
 
 1	VP	StrictTransVerb NP
 1	VP	Verb NP
@@ -47,7 +54,7 @@
 #acts as an adverb
 1	VP	VP PP
 
-1	NP	Det Noun
+5	NP	Det Noun
 1	NP	PropNoun
 #1	NP	Pronoun
 1	NP	NP Conj NP
@@ -71,12 +78,13 @@
 1	Verb	kissed
 1	Verb	understood
 0.5	Verb	pickled
-1	Verb	thought
+#1	Verb	thought
 1	Verb	worked
 
 1	StrictTransVerb	perplexed
 
 1	StrictInTransVerb	sighed
+1	StrictInTransVerb	thought
 
 1	CausVerb	perplexed
 
@@ -125,4 +133,5 @@
 
 1	SubConj	that
 
+1	DummySubject	it
 
