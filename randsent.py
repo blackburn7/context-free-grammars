@@ -111,7 +111,6 @@ class Grammar:
         grammar_rules = [line.strip() for line in grammar_str.splitlines() if line.strip() and not line.strip().startswith("#")]
 
         for rule in grammar_rules:
-            print(f"rule: {rule}")
             prob, lhs, rhs = rule.split("\t")
             # changed int to float as probabilities can also be floats (ex. wallstreet.gr)
             self.rules.setdefault(lhs, []).append((float(prob), rhs.split("#")[0].strip()))           
@@ -184,11 +183,19 @@ def main():
     # Generate sentences
     for i in range(args.num_sentences):
         # Use Grammar object to generate sentence
-        sentence = grammar.sample(
-            derivation_tree=args.tree,
-            max_expansions=args.max_expansions,
-            start_symbol=args.start_symbol
-        )
+        sentence = ""
+        
+        iter = 0
+        while sentence != "Sally and the president wanted and ate a sandwich .":
+            sentence = grammar.sample(
+                derivation_tree=args.tree,
+                max_expansions=args.max_expansions,
+                start_symbol=args.start_symbol
+            )
+            if iter % 1000 == 0:
+                print(f"cur sentence {iter}")
+            
+            iter += 1
 
         # Print the sentence with the specified format.
         # If it's a tree, we'll pipe the output through the prettyprint script.
