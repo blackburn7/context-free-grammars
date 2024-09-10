@@ -190,7 +190,7 @@ def main():
             )
         
         # iter = 0
-        # while sentence != "Sally and the president wanted and ate a sandwich .":
+        # while sentence.strip() != "the president worked on every proposal on the desk .":
         #     sentence = grammar.sample(
         #         derivation_tree=args.tree,
         #         max_expansions=args.max_expansions,
