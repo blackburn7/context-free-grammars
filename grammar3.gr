@@ -40,16 +40,22 @@
 1	VP	StrictInTransVerb
 1	VP	Verb
 
-1	VP Conj	VP
+1	VP	VP Conj VP
 
 1	VP	RepVerb SubConj NP VP
 
+#acts as an adverb
+1	VP	VP PP
+
 1	NP	Det Noun
 1	NP	PropNoun
-1	NP	Pronoun
+#1	NP	Pronoun
 1	NP	NP Conj NP
 
+1	PP	Prep Det LocativeNoun
 
+
+# prep acting as an adjective
 0.2	NP	NP PP
 1	PP	Prep NP
 5	Noun	Adj Noun
@@ -74,7 +80,9 @@
 
 1	CausVerb	perplexed
 
+
 1	AdVerb	very
+1	AdVerb	AdVerb AdVerb
 
 1	RepVerb	understood
 1	RepVerb	thought
@@ -88,17 +96,25 @@
 1	Noun	sandwich
 0.5	Noun	pickle
 1	Noun	chief of staff
-1	Noun	floor
-1	Noun	desk
+#1	Noun	floor
+#1	Noun	desk
+1	Noun	proposal
+
+1	LocativeNoun	floor
+1	LocativeNoun	desk
+
 
 1	PropNoun	Sally
 
-1	Pronoun	it
+#1	Pronoun	it
 
+1	Adj	AdVerb Adj
 1	Adj	fine
 1	Adj	delicious
 0.8	Adj	perplexed
 0.5	Adj	pickled
+
+
 
 1	Prep	with
 1	Prep	on
@@ -108,3 +124,5 @@
 1	Conj	and
 
 1	SubConj	that
+
+
