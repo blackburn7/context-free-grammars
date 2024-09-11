@@ -188,18 +188,6 @@ def main():
                 max_expansions=args.max_expansions,
                 start_symbol=args.start_symbol
             )
-        
-        # iter = 0
-        # while sentence.strip() != "the president worked on every proposal on the desk .":
-        #     sentence = grammar.sample(
-        #         derivation_tree=args.tree,
-        #         max_expansions=args.max_expansions,
-        #         start_symbol=args.start_symbol
-        #     )
-        #     if iter % 1000 == 0:
-        #         print(f"cur sentence {iter}")
-            
-        #     iter += 1
 
         # Print the sentence with the specified format.
         # If it's a tree, we'll pipe the output through the prettyprint script.
