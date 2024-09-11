@@ -36,6 +36,8 @@
 1	S	NP VP
 0.2	S	DummySubject CausVerb NP EmbeddedClause
 0.2	S	EmbeddedClause CausVerb NP
+1	S	NP_Singular VP_Singular
+1	S	NP_Plural VP_Plural
 
 1	EmbeddedClause	SubConj S
 
@@ -47,10 +49,18 @@
 1	VP	RepVerb SubConj NP VP
 1	VP	VP PP
 
-1	NP	Det Noun
+1	VP_Singular	VerbSingular NP
+1	VP_Plural	VerbPlural NP
+
+5	NP	Det Noun
 1	NP	PropNoun
 1	NP	NP Conj NP
 1	NP	NP PP
+
+1	NP_Singular	DetSingular SingularNoun
+1	NP_Plural	DetPlural PluralNoun
+1	NP_Plural	NP_Singular Conj NP_Singular
+1	NP_Plural	PluralNoun
 
 1	PP	Prep Det LocativeNoun
 1	PP	Prep NP
@@ -69,6 +79,9 @@
 #1	Verb	thought
 1	Verb	worked
 
+1	VerbSingular	chooses
+1	VerbPlural	choose
+
 1	StrictTransVerb	perplexed
 
 1	StrictInTransVerb	sighed
@@ -86,6 +99,16 @@
 1	Det	a
 1	Det	every
 
+1	DetSingular	the
+1	DetSingular	a
+1	DetSingular	every
+1	DetSingular	this
+
+1	DetPlural	the
+1	DetPlural	some
+1	DetPlural	many
+1	DetPlural	few
+
 1	Noun	Adj Noun
 1	Noun	president
 1	Noun	sandwich
@@ -94,6 +117,14 @@
 #1	Noun	floor
 #1	Noun	desk
 1	Noun	proposal
+
+1	SingularNoun	president
+1	SingularNoun	chief of staff
+1	SingularNoun	sandwich
+
+1	PluralNoun	citizens
+1	PluralNoun	presidents
+1	PluralNoun	sandwiches
 
 1	LocativeNoun	floor
 1	LocativeNoun	desk
