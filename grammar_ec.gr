@@ -52,11 +52,13 @@
 0.1	VP	VP Conj VP
 0.1	VP	RepVerb SubConj NP VP
 0.1	VP	VP PP
-3	VP	Aux NP
+1	VP	AuxP NP
+1	VP	AuxF VP
 
-1	Aux	AuxVerbPast
-1	Aux	AuxVerbPast
+1	AuxP	AuxVerbPastState
+1	AuxP	AuxVerbPresentState
 
+1	AuxF	AuxVerbFutureState
 
 1	VP_Singular	VerbSingular NP
 1	VP_Plural	VerbPlural NP
@@ -105,8 +107,14 @@
 #1	Verb	thought
 1	Verb	worked
 
-1	AuxVerbPresent	is
-1	AuxVerbPast	was
+1	FutureVerb	eat
+1	FutureVerb	want
+1	FutureVerb	kiss
+
+1	AuxVerbPresentState	is
+1	AuxVerbPastState	was
+
+1	AuxVerbFutureState	will
 
 1	VerbSingular	chooses
 1	VerbPlural	choose
