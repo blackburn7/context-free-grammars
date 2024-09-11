@@ -22,6 +22,9 @@
 1	ROOT	S .
 1	ROOT	S !
 0.3	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
+1	ROOT	ApposEndS .
+1	ROOT	ApposEndS !
+0.3	ROOT	is it true that ApposEndS ? 
 
 
 # The basic grammar rules.  Here's what the abbreviations stand for:
@@ -34,6 +37,7 @@
 #    Adj = adjective
 
 1	S	NP VP
+0.3	S	ComplexNP VP
 0.2	S	DummySubject CausVerb NP EmbeddedClause
 0.2	S	EmbeddedClause CausVerb NP
 0.5	S	NP_Singular VP_Singular
@@ -56,14 +60,9 @@
 1	NP	PropNoun
 1	NP	NP Conj NP
 1	NP	NP PP
-5	NP	NP ApposChain
 
-1	ApposChain	, Appos ,
-1	ApposChain	, Appos ApposChain
-
-1	Appos	RelClause
-1	Appos	DetAppos Noun
-1	Appos	NumPhrase
+1	ComplexNP	ApposPhrase
+1	ComplexNP	NP ApposChain
 
 1	NP_Singular	DetSingular SingularNoun
 1	NP_Plural	DetPlural PluralNoun
@@ -72,6 +71,21 @@
 
 1	PP	Prep Det LocativeNoun
 1	PP	Prep NP
+
+1	ApposChain	, Appos ,
+1	ApposChain	, Appos ApposChain
+
+1	Appos	RelClause
+1	Appos	NP
+1	Appos	NumPhrase
+
+1	ApposPhrase	NP , NP ,
+1	ApposPhrase	NP , NumPhrase ,
+1	ApposPhrase	NP , RelClause ,
+
+1	ApposEndS	S , NP
+1	ApposEndS	S , NumPhrase
+1	ApposEndS	S , RelClause
 
 1	NumPhrase	Number years old
 
