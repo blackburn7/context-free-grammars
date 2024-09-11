@@ -72,15 +72,13 @@
 0.1	PP	Prep NP
 
 1	ApposChain	, Appos ,
-3	ApposChain	, Appos ApposChain
+1	ApposChain	, Appos ApposChain
 
 1	Appos	RelClause
 1	Appos	NumPhrase
 1	Appos	DetAppos Noun
 
-1	ApposEndS	S , NP
-1	ApposEndS	S , NumPhrase
-1	ApposEndS	S , RelClause
+1	ApposEndS	S , Appos
 
 1	NumPhrase	Number years old
 
@@ -140,7 +138,7 @@
 1	Noun	sandwich
 0.5	Noun	pickle
 1	Noun	chief of staff
-#1	Noun	floor
+1	Noun	floor
 #1	Noun	desk
 1	Noun	proposal
 
