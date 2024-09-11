@@ -66,7 +66,6 @@
 1	Verb	kissed
 1	Verb	understood
 0.5	Verb	pickled
-#1	Verb	thought
 1	Verb	worked
 
 1	StrictTransVerb	perplexed
@@ -91,16 +90,12 @@
 1	Noun	sandwich
 0.5	Noun	pickle
 1	Noun	chief of staff
-#1	Noun	floor
-#1	Noun	desk
 1	Noun	proposal
 
 1	LocativeNoun	floor
 1	LocativeNoun	desk
 
 1	PropNoun	Sally
-
-#1	Pronoun	it
 
 1	Adj	AdVerb Adj
 1	Adj	fine
