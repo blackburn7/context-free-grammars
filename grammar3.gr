@@ -43,17 +43,17 @@
 1	VP	Verb NP
 1	VP	StrictInTransVerb
 1	VP	Verb
-1	VP	VP Conj VP
-1	VP	RepVerb SubConj NP VP
-1	VP	VP PP
+0.1	VP	VP Conj VP
+0.1	VP	RepVerb SubConj NP VP
+0.1	VP	VP PP
 
 1	NP	Det Noun
 1	NP	PropNoun
-1	NP	NP Conj NP
-1	NP	NP PP
+0.1	NP	NP Conj NP
+0.1	NP	NP PP
 
 1	PP	Prep Det LocativeNoun
-1	PP	Prep NP
+0.1	PP	Prep NP
 
 # Vocabulary.  Your program can see that "ate" is a terminal
 # symbol because there exists no rule for rewriting it.
@@ -76,7 +76,7 @@
 1	CausVerb	perplexed
 
 1	AdVerb	very
-1	AdVerb	AdVerb AdVerb
+0.1	AdVerb	AdVerb AdVerb
 
 1	RepVerb	understood
 1	RepVerb	thought
